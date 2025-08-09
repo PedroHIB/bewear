@@ -117,8 +117,10 @@ Deploy automático via Vercel a cada push na branch `main`.
 
 ## 🤝 Contribuição
 
-Sinta-se à vontade para contribuir!  
-Este projeto foi criado por [Pedro Barros](https://github.com/PedroHIB).
+Sinta-se à vontade para contribuir!
+
+Este projeto foi criado por [Felipe Rocha](https://github.com/fullstackclubeducacao).
+Desenvolvido por [Pedro Barros](https://github.com/PedroHIB).
 
 Para contribuir, faça um fork, crie uma branch e envie um pull request.
 
