@@ -37,8 +37,9 @@ cd seu-repo
 npm install
 ```
 
-⚙️ **Configuração**  
-1.Renomeie o arquivo `.env.example` para `.env` e adicione as variáveis de ambiente:
+⚙️ **Configuração**
+
+1. Renomeie o arquivo `.env.example` para `.env` e adicione as variáveis de ambiente:
 
 ```env
 DATABASE_URL="postgresql://neondb_owner:npg_GTroFEBNnM61@ep-autumn-pine-acobzgtm-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
@@ -58,3 +59,67 @@ export const auth = betterAuth({
   plugins: [organization(), twoFactor()],
 });
 ```
+
+🗄️ **Banco de Dados (Drizzle + Neon)**  
+Após alterar o schema do banco de dados, execute:
+
+```bash
+npx drizzle-kit studio
+```
+
+Para visualizar e gerenciar seu banco via interface:
+
+```bash
+npx drizzle-kit studio
+```
+
+## 💻 Uso
+
+### Better Auth
+
+- Suporte para autenticação por email/senha, provedores OAuth e plugins como 2FA e magic link.
+- Integração simples com frameworks como React, Next.js, Svelte, entre outros.
+
+### shadcn/ui
+
+- Componentes acessíveis e altamente personalizáveis.
+- Ideal para criar seu próprio design system.
+
+### Neon
+
+- Banco de dados PostgreSQL serverless.
+- Recursos avançados como branching e time-travel para ambientes de desenvolvimento.
+
+---
+
+## 📸 Capturas de Tela
+
+> Adicione aqui prints da aplicação mostrando a interface e exemplos de uso.
+
+---
+
+## 🌐 Deploy
+
+O projeto está disponível em:  
+**[Link do Deploy](#)**
+
+Deploy automático via Vercel a cada push na branch `main`.
+
+---
+
+## 📍 Roadmap
+
+- [ ] Criar interface de login com shadcn/ui
+- [ ] Adicionar passkey no Better Auth
+- [ ] Configurar branching no Neon para ambientes separados
+
+---
+
+## 🤝 Contribuição
+
+Sinta-se à vontade para contribuir!  
+Este projeto foi criado por [Pedro Barros](https://github.com/PedroHIB).
+
+Para contribuir, faça um fork, crie uma branch e envie um pull request.
+
+---
