@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nome do Projeto
 
-## Getting Started
+Breve descrição do projeto — o que ele faz e seu propósito principal.
 
-First, run the development server:
+---
+
+## 🏆 Badges
+
+![Build](https://img.shields.io/github/actions/workflow/status/seu-usuario/seu-repo/ci.yml?label=build&logo=github)
+![License](https://img.shields.io/github/license/seu-usuario/seu-repo?color=blue)
+![Node](https://img.shields.io/badge/node-%3E%3D18-green?logo=node.js)
+![Deploy](https://img.shields.io/github/deployments/seu-usuario/seu-repo/Production?label=vercel&logo=vercel)
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- **[Next.js](https://nextjs.org/)** — Framework React com renderização híbrida (SSR/SSG) e otimizações de performance.
+- **[TailwindCSS](https://tailwindcss.com/)** — Framework CSS utilitário para estilização rápida e responsiva.
+- **[Better Auth](https://www.better-auth.com/)** — Biblioteca de autenticação e autorização agnóstica ao framework, voltada para TypeScript.
+- **[shadcn/ui](https://ui.shadcn.com/)** — Sistema de componentes acessíveis e personalizáveis baseado em Tailwind CSS/Radix.
+- **[Neon](https://neon.com/)** — Banco de dados serverless compatível com PostgreSQL, com escalabilidade automática.
+
+---
+
+## 📦 Instalação
+
+### Requisitos
+
+- Node.js >= 18
+- TypeScript >= 5
+- Conta ativa no Neon
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/seu-usuario/seu-repo.git
+cd seu-repo
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+⚙️ **Configuração**  
+1.Renomeie o arquivo `.env.example` para `.env` e adicione as variáveis de ambiente:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```env
+DATABASE_URL="postgresql://neondb_owner:npg_GTroFEBNnM61@ep-autumn-pine-acobzgtm-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+BETTER_AUTH_SECRET=Mn4TqRhbc6YMqaXZcNyQrpV8B1v1TsmS
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Configure o Better Auth no seu projeto:
 
-## Learn More
+```ts
+import { betterAuth } from "better-auth";
+import { Pool } from "pg";
+import { organization, twoFactor } from "better-auth/plugins";
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+export const auth = betterAuth({
+  database: new Pool({ connectionString: process.env.DATABASE_URL }),
+  emailAndPassword: { enabled: true },
+  plugins: [organization(), twoFactor()],
+});
+```
